@@ -11,4 +11,8 @@ lazy val root = (project in file("."))
     libraryDependencies += scalaTest % Test
   )
 
-// See https://www.scala-sbt.org/1.x/docs/Using-Sonatype.html for instructions on how to publish to Sonatype.
+libraryDependencies += "org.postgresql" % "postgresql" % "42.2.6"
+
+libraryDependencies += "commons-cli" % "commons-cli" % "1.4"
+
+mainClass in (Compile, run) := Some("mayton.eav.RmToEav")
