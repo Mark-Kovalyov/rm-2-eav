@@ -32,3 +32,32 @@ INSERT INTO quintet VALUES (359,356,350,3,null);
 INSERT INTO quintet VALUES (360,357,350,4,null);
 INSERT INTO quintet VALUES (361,358,350,5,null);
 COMMIT;
+
+-- Hash partition by datatype
+
+CREATE TABLE quintet_hash(
+    id       NUMBER GENERATED ALWAYS AS IDENTITY,
+    datatype NUMBER NOT NULL,
+    parent   NUMBER NOT NULL,
+    order    NUMBER NOT NULL,
+    value    VARCHAR2(4000)
+)
+PARTITION BY HASH (datatype)
+PARTITIONS 16;
+
+-- Clustered table
+
+CREATE CLUSTER quintet_cluster(datatype_id NUMBER) SIZE 512;
+
+CREATE INDEX qunitet_cluster_index ON CLUSTER quintet_cluster;
+
+CREATE TABLE quintet_cluster (
+    id       NUMBER GENERATED ALWAYS AS IDENTITY,
+    datatype NUMBER NOT NULL,
+    parent   NUMBER NOT NULL,
+    order    NUMBER NOT NULL,
+    value    VARCHAR2(4000)
+)
+CLUSTER quintet_cluster(datatype);
+
+--CREATE CLUSTER employees_departments_cluster(department_id NUMBER(4)) SIZE 8192 HASHKEYS 100;

@@ -8,11 +8,9 @@ ThisBuild / organizationName := "example"
 lazy val root = (project in file("."))
   .settings(
     name := "rm-2-eav-scala",
-    libraryDependencies += scalaTest % Test
+    libraryDependencies += scalaTest % Test,
+    libraryDependencies += "org.postgresql" % "postgresql" % "42.2.6",
+    libraryDependencies += "commons-cli" % "commons-cli" % "1.4"
   )
-
-libraryDependencies += "org.postgresql" % "postgresql" % "42.2.6"
-
-libraryDependencies += "commons-cli" % "commons-cli" % "1.4"
 
 mainClass in (Compile, run) := Some("mayton.eav.RmToEav")

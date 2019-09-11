@@ -23,3 +23,14 @@ https://habr.com/en/company/neoflex/blog/451218/
 
 Magento 2 EAV: обзор структур данных
 https://habr.com/en/post/441122/
+
+## Postgresql
+
+ $ sudo -i -u postgres
+ $ psql
+ postgres=# create user mayton with encrypted password '********';
+ postgres=# create database maytondb with owner mayton;
+ CREATE DATABASE
+ $ exit
+ $ psql -h localhost -p 5432 -d maytondb -U mayton 
+  

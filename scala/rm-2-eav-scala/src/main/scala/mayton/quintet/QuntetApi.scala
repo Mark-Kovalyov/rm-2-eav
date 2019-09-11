@@ -9,6 +9,10 @@ case class Quintet(
 
 trait QuntetBasicApi {
 
+  def registerPrimitiveType(name : String) : Unit = ???
+
+  def registerEntity(name : String) : Unit = ???
+
   def quintetById(id : Int) : Quintet = ???
 
   def quintetChainStartWith(id : Int) : LazyList[Quintet] = ???
